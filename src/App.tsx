@@ -1,37 +1,34 @@
-import { log } from 'console';
-import * as React from 'react';
-import { useEffect } from 'react';
-import getHelloWorld from './getHelloWorld'; // 导入 getHelloWorld 函数
-import parseTable from "./tools"
-
-declare global {
-  interface Window {
-    getHelloWorld: any;
-  }
-}
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import './App.css'
 
 function App() {
-  const [result, setResult] = React.useState<any | string | null>(null);
+  const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    if (typeof window.getHelloWorld === 'function') {
-      console.log(typeof window.getHelloWorld);
-      window.getHelloWorld().then((res: string) => {
-        console.log('已加载插件effect');
-        const rows = parseTable(res);
-        console.log(rows.map((obj: { cover: string }) => obj.cover));
-        setResult(rows);
-      });
-    } else {
-      console.log('没加载插件1');
-      setResult('Hello World from React App');
-    }
-  }, []);
   return (
     <div className="App">
-      <p></p>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://reactjs.org" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
