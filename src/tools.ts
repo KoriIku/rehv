@@ -12,6 +12,7 @@ function parseTable(html: string) {
         time: string;
         author: string;
     }[] = [];
+    $('tbody tr:first-child').remove();
 
     $('tr').each((i: number, elem: any) => {
         const $elem = $(elem);
@@ -42,8 +43,9 @@ function parseTable(html: string) {
             item.rating = parseInt(irElement.css('background-position').split(' ')[1], 10);
         }
 
-        item.time = $elem.find('.gl2c div[onClick]').text();
-        item.author = $elem.find('.gl3c:last-child div:first-child').text();
+        item.time = $elem.find('.gl2c div:nth-child(3) div:first-child').text();
+        ;
+        item.author = $elem.find('.gl4c div:first-child').text();
 
         items.push(item);
     });
