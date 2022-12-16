@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom';
 import GallaryList from './components/GallaryList';
 
 declare global {
@@ -9,7 +10,10 @@ declare global {
 function App() {
 
   return (
+    <BrowserRouter>
+    
     <GallaryList />
+    </BrowserRouter>
   );
 }
 
