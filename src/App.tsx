@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import parseTable from "./tools"
 import { Card, Col, List, Rating, Row } from '@douyinfe/semi-ui';
+import ColorChip from './components/ColorChip';
 
 declare global {
   interface Window {
@@ -36,7 +37,7 @@ function App() {
           <Card style={{ maxWidth: 360}} >
             <Row >
               <Col span={6} style={{ overflow: 'hidden'}}>
-                <img src={item.cover} alt={item.title} style={{ objectFit: 'cover' }} />
+                <img src={item.cover} alt={item.title} style={{ width: '100%', objectFit: 'cover' }} />
               </Col>
               <Col span={18}>
                 <h3 style={{ color: 'var(--semi-color-text-0)', fontWeight: 500 }}>{item.title}</h3>
@@ -51,7 +52,7 @@ function App() {
                 </Row>
                 <Row>
                   <Col span={10}>
-                    {item.category}
+                    <ColorChip category={item.category}/>
                   </Col>
                   <Col span={14}>
                     {item.time}
