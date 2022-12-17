@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Col, List, Rating, Row } from '@douyinfe/semi-ui';
 import ColorChip from './ColorChip';
 import { IndexListItemPorps } from '../interface/gallery';
+import { Link } from 'react-router-dom';
 
 type Props = {
   item: IndexListItemPorps
@@ -15,11 +16,11 @@ const GallaryCard: React.FC<Props> = ({ item }) => {
           <img src={item.thumb} alt={item.title} style={{ width:"100%", objectFit: 'cover' }} />
         </Col>
         <Col span={18}>
-          <h3>{item.title}</h3>
+        <Link to={`/g/${item.gid}/${item.gtoken}`}><h3>{item.title}</h3></Link>
           <p>{item.uploader}</p>
           <Row>
             <Col>
-              <Rating allowHalf value={item.rating} />
+              {/* <Rating allowHalf value={item.rating} /> */}
             </Col>
             <Col>
               {item.language}

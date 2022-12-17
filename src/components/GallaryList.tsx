@@ -24,7 +24,7 @@ function GallaryList() {
     }, []);
   
     return (
-        <div style={{}}>
+        <div>
           <List
             bordered
             dataSource={result}
