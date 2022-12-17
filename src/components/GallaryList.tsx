@@ -24,8 +24,6 @@ function GallaryList() {
     }, []);
   
     return (
-
-  
         <div style={{}}>
           <List
             bordered

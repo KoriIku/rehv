@@ -22,7 +22,7 @@ const GallaryCard: React.FC<Props> = ({ item }) => {
           <img src={item.cover} alt={item.title} style={{ width:"100%", objectFit: 'cover' }} />
         </Col>
         <Col span={18}>
-          <h3 style={{ color: 'var(--semi-color-text-0)', fontWeight: 500 }}>{item.title}</h3>
+          <h3>{item.title}</h3>
           <p>{item.author}</p>
           <Row>
             <Col>

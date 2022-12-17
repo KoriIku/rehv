@@ -1,4 +1,5 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import GallaryDetail from './components/GallaryDetail';
 import GallaryList from './components/GallaryList';
 
 declare global {
@@ -7,13 +8,20 @@ declare global {
   }
 }
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <GallaryList />,
+  },
+  {
+    path: "/g/:gid/:gtoken/",
+    element: <GallaryDetail />,
+  }
+]);
 
+function App() {
   return (
-    <BrowserRouter>
-    
-    <GallaryList />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   );
 }
 
