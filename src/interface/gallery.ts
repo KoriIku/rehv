@@ -19,18 +19,17 @@ interface IndexListTagProps {
 }
 export interface IndexListItemPorps {
   gid: string
-  token: string
+  gtoken: string
   archiver_key: string
   title: string
   title_jpn: string
-  category: Category
+  category: string
   thumb: string
   uploader: string
-  posted: number
   filecount: string
   filesize: string
   expunged: boolean
-  rating: string
+  rating: number
   language: string
   torrentcount: string
   tags: IndexListTagProps[]
@@ -39,6 +38,7 @@ export interface IndexListItemPorps {
   rating_count: string
   favcount: string
   favoritelink: string
+  uploadtime: string
 }
 
 export interface Torrent {

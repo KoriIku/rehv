@@ -14,7 +14,7 @@ function GallaryList() {
         window.getHelloWorld().then((res: string) => {
           console.log('已加载插件effect');
           const rows = parseTable(res);
-          console.log(rows.map((obj: { time: string }) => obj.time));
+          console.log(rows.map((obj: { uploadtime: string }) => obj.uploadtime));
           setResult(rows);
         });
       } else {

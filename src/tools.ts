@@ -1,41 +1,23 @@
 import React, { Suspense, useEffect } from 'react';
 
 import cheerio from 'cheerio';
+import { IndexListItemPorps } from './interface/gallery';
 
 function parseTable(html: string) {
     const $ = cheerio.load(html);
-    const items: {
-        category: string;
-        cover: string;
-        title: string;
-        rating?: number;
-        time: string;
-        author: string;
-    }[] = [];
+    const items: IndexListItemPorps[] = [];
+    
     $('tbody tr:first-child').remove();
 
     $('tr').each((i: number, elem: any) => {
         const $elem = $(elem);
-        const item: {
-            category: string;
-            cover: string;
-            title: string;
-            rating?: number;
-            time: string;
-            author: string;
-        } = {
-            category: '',
-            cover: '',
-            title: '',
-            time: '',
-            author: ''
-        };
+        const item = {} as IndexListItemPorps;
 
         item.category = $elem.find('.gl1c.glcat div').text();
 
         var imgElement = $elem.find('.gl2c img');
         var src = (imgElement.attr('data-src') || imgElement.attr('src')) as string;
-        item.cover = src;
+        item.thumb = src;
         
         item.title = $elem.find('.gl3c.glname .glink').text();
         const irElement = $elem.find('.gl2c .ir');
@@ -43,9 +25,9 @@ function parseTable(html: string) {
             item.rating = parseInt(irElement.css('background-position').split(' ')[1], 10);
         }
 
-        item.time = $elem.find('.gl2c div:nth-child(3) div:first-child').text();
+        item.uploadtime = $elem.find('.gl2c div:nth-child(3) div:first-child').text();
         ;
-        item.author = $elem.find('.gl4c div:first-child').text();
+        item.uploader = $elem.find('.gl4c div:first-child').text();
 
         items.push(item);
     });
