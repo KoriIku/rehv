@@ -5,6 +5,7 @@ import GallaryList from './components/GallaryList';
 declare global {
   interface Window {
     getHelloWorld: any;
+    xhrGet: any;
   }
 }
 

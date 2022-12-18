@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import parseTable from "../tools"
 import { List } from '@douyinfe/semi-ui';
 import GallaryCard from './GallaryCard';
+import { parseGallaryList } from '../tools';
 
 
 function GallaryList() {
@@ -13,7 +13,7 @@ function GallaryList() {
         console.log(typeof window.getHelloWorld);
         window.getHelloWorld().then((res: string) => {
           console.log('已加载插件effect');
-          const rows = parseTable(res);
+          const rows = parseGallaryList(res);
           console.log(rows.map((obj: { uploadtime: string }) => obj.uploadtime));
           setResult(rows);
         });
