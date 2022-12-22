@@ -65,3 +65,9 @@ export function parseGallaryDetail(html: string) {
     const previewPrePage = $('#gdt > div.gdtm').length;
     console.log(previewPrePage + ' pages pre preview');
 }
+
+function getComicInWhichPreviewPage(comicPage: number, previewPrePage: number):[number, number]{
+    const page = comicPage / previewPrePage;
+    const no = comicPage % previewPrePage;
+    return [page, no];
+}
