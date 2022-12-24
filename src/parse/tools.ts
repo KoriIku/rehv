@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 
 import cheerio from 'cheerio';
-import { IndexListItemPorps } from './interface/gallery';
+import { IndexListItemPorps } from '../interface/gallery';
 
 export function parseGallaryList(html: string) {
     const $ = cheerio.load(html);

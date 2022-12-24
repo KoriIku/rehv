@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { parseGallaryDetail } from "../tools";
+import { parseGallaryDetail } from "../parse/tools";
 
 
 function GallaryDetail() {

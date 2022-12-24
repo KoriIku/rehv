@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { List } from '@douyinfe/semi-ui';
 import GallaryCard from './GallaryCard';
-import { parseGallaryList } from '../tools';
+import { parseGallaryList } from '../parse/tools';
 
 
 function GallaryList() {
