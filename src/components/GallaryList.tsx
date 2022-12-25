@@ -7,8 +7,6 @@ import { useSWRandAxios } from '../hooks/useSWRGallaryList';
 
 
 function GallaryList() {
-    const [result, setResult] = React.useState<any | string | null>(null);
-
     const { data, error, mutate } = useSWRandAxios(
       '/popular'
     );
