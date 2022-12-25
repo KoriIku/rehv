@@ -68,10 +68,10 @@ export function useSWRandAxios(path: string, params?: any){
     console.log('useSWRandAxios');
     function fetchData() {
         console.log('到fetch里了');
-        return instance.get(path).then(res => res.data);  // 使用 params 选项指定查询参数
+        return instance.get(path,{params:params}).then(res => res.data);  // 使用 params 选项指定查询参数
     }
 
-    return useSWR([path, params], fetchData, {
+    return useSWR([path, {params:params}], fetchData, {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false
