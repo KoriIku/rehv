@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { List } from '@douyinfe/semi-ui';
 import GallaryCard from './GallaryCard';
 import { parseGallaryList } from '../parse/tools';
-import { useSWRWithGM } from '../hooks/useSWRGallaryList';
+import { useSWRandAxios, useSWRWithGM } from '../hooks/useSWRGallaryList';
 
 
 function GallaryList() {
     const [result, setResult] = React.useState<any | string | null>(null);
 
-    const { data, error, mutate } = useSWRWithGM(
+    const { data, error, mutate } = useSWRandAxios(
       '/popular'
     );
   

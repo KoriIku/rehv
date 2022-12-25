@@ -11,6 +11,7 @@
   "dependencies": {
     "@douyinfe/semi-ui": "^2.25.2",
     "@types/cheerio": "^0.22.31",
+    "axios": "^1.2.1",
     "cheerio": "^1.0.0-rc.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
