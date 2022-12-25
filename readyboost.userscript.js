@@ -13,20 +13,6 @@
 
 unsafeWindow.myPluginLoaded = true;
 GM_log("载入");
-function getHelloWorld() {
-  return new Promise((resolve, reject) => {
-    GM_xmlhttpRequest({
-      method: "GET",
-      url: "https://e-hentai.org/popular",
-      onload: response => {
-        resolve(response.responseText);
-      },
-      onerror: error => {
-        reject(error);
-      }
-    });
-  });
-}
 
 function xhrGet(url) {
   return new Promise((resolve, reject) => {
@@ -44,4 +30,5 @@ function xhrGet(url) {
 }
 
 unsafeWindow.getHelloWorld = getHelloWorld;
-unsafeWindow.xhrGet = xhrGet
+unsafeWindow.xhrGet = xhrGet;
+unsafeWindow.GM_XHR = GM_xmlhttpRequest;
