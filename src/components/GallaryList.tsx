@@ -9,7 +9,7 @@ import { useSWRWithGM } from '../hooks/useSWRGallaryList';
 function GallaryList() {
     const [result, setResult] = React.useState<any | string | null>(null);
 
-    const { data, error } = useSWRWithGM(
+    const { data, error, mutate } = useSWRWithGM(
       '/popular'
     );
   

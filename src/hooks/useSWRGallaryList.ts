@@ -15,7 +15,7 @@ export function useSWRWithGM(
     cookies: string = '',
     params: string | string[][] | Record<string, string> | URLSearchParams | undefined = undefined,
     options: Options = { method: 'GET' },
-): { data: any; error: any } {
+){
     function fetchWithGM() {
         console.log('执行swr');
         const domain = "https://e-hentai.org"
@@ -48,5 +48,9 @@ export function useSWRWithGM(
     }
 
     // 禁用掉了焦点切换获取数据，理论上来讲不需要
-    return useSWR(path, fetchWithGM, {revalidateOnFocus : false});
+    return useSWR(path, fetchWithGM, {
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false
+    });
 }
