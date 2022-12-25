@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { List } from '@douyinfe/semi-ui';
 import GallaryCard from './GallaryCard';
 import { parseGallaryList } from '../parse/tools';
-import { useSWRandAxios, useSWRWithGM } from '../hooks/useSWRGallaryList';
+import { useSWRandAxios } from '../hooks/useSWRGallaryList';
 
 
 function GallaryList() {
