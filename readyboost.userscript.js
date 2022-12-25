@@ -29,6 +29,5 @@ function xhrGet(url) {
   });
 }
 
-unsafeWindow.getHelloWorld = getHelloWorld;
 unsafeWindow.xhrGet = xhrGet;
 unsafeWindow.GM_XHR = GM_xmlhttpRequest;
