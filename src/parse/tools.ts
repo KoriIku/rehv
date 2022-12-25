@@ -52,7 +52,6 @@ export function parseGallaryDetail(html: string) {
 
     //获取预览页数
     const aElement = $('body div.gtb:first tr td:nth-last-of-type(2) a');
-    console.log(aElement.attr("href"));
     console.log(aElement.text() + 'p preview');
 
     //获取画廊页数
