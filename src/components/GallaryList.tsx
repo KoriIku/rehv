@@ -17,22 +17,6 @@ function GallaryList() {
     if (!data) return <div>Loading...</div>;
     const rows = parseGallaryList(data);
     console.log('获取到数据');
-
-  
-    // useEffect(() => {
-    //   if (typeof window.getHelloWorld === 'function') {
-    //     console.log(typeof window.getHelloWorld);
-    //     window.getHelloWorld().then((res: string) => {
-    //       console.log('已加载插件effect');
-    //       const rows = parseGallaryList(res);
-    //       console.log(rows.map((obj: { uploadtime: string }) => obj.uploadtime));
-    //       setResult(rows);
-    //     });
-    //   } else {
-    //     console.log('没加载插件1');
-    //     setResult('Hello World from React GallaryList');
-    //   }
-    // }, []);
   
     return (
         <div>
