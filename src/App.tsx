@@ -6,6 +6,7 @@ declare global {
   interface Window {
     getHelloWorld: any;
     xhrGet: any;
+    GM_XHR: any;
   }
 }
 
