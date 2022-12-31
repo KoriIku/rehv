@@ -97,6 +97,16 @@ export interface PageListProps {
   filecount: number
 }
 
+export interface normalPreview {
+  link: string
+  imageUrl: string
+  xOffset: number
+  yOffset: number
+  width: number
+  height: number
+  position: number
+}
+
 export type GalleryType =
   | 'index'
   | 'watched'

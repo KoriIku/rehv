@@ -1,3 +1,5 @@
+import { ImageList, ImageListItem } from "@mui/material";
+import { it } from "node:test";
 import React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -15,15 +17,25 @@ function GallaryDetail() {
   if (error) return <div>Failed to load data</div>;
   if (!data) return <div>Loading...</div>;
 
-  parseGallaryDetail(data);
+  const itemData = parseGallaryDetail(data);
 
 
   return (
-    <div>
+    <>
       /g/{gid}/{gtoken}
-    </div>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+      }}>
+
+        {itemData.map((item) => (
+          <div style={{ width: `${item.width}px`, height: `${item.height}px`, background: `transparent url(${item.imageUrl}) -${item.xOffset}px 0 no-repeat` }}>
+          </div>
+        ))}
+
+      </div>
+    </>
   );
 }
 
 export default GallaryDetail
- 

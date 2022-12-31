@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 
 import cheerio from 'cheerio';
-import { IndexListItemPorps } from '../interface/gallery';
+import { IndexListItemPorps, normalPreview } from '../interface/gallery';
 
 export function parseGallaryList(html: string) {
     const $ = cheerio.load(html);
@@ -47,6 +47,9 @@ export function parseGallaryList(html: string) {
     return items;
 }
 
+// 定义正则表达式
+const PATTERN_NORMAL_PREVIEW = /<div[^<>]*width:(\d+)[^<>]*height:(\d+)[^<>]*\((.+?)\)[^<>]*-(\d+)px[^<>]*><a[^<>]*href="(.+?)"[^<>]*><img alt="([\d,]+)"/;
+
 export function parseGallaryDetail(html: string) {
     const $ = cheerio.load(html);
 
@@ -63,9 +66,34 @@ export function parseGallaryDetail(html: string) {
     //获取每次预览的图片数
     const previewPrePage = $('#gdt > div.gdtm').length;
     console.log(previewPrePage + ' pages pre preview');
+
+    // 获取预览图片
+    const elements: normalPreview[] = [];
+
+    $('#gdt > .gdtm').each((i, element) => {
+        const link = $(element).find('a').attr('href')!.trim()
+
+        // 获取元素的HTML代码
+        const elementHtml = $(element).html()!;
+
+        // 匹配正则表达式
+        const match = elementHtml.match(PATTERN_NORMAL_PREVIEW)!;
+
+        // 如果匹配成功，则提取信息
+
+        const position = parseInt(match[6], 10) - 1;
+        const imageUrl = match[3].trim();
+        const xOffset = parseInt(match[4], 10);
+        const yOffset = 0;
+        const width = parseInt(match[1], 10);
+        const height = parseInt(match[2], 10);
+
+        elements.push({ link, imageUrl, xOffset, yOffset, width, height, position });
+    });
+    return elements;
 }
 
-function getComicInWhichPreviewPage(comicPage: number, previewPrePage: number):[number, number]{
+function getComicInWhichPreviewPage(comicPage: number, previewPrePage: number): [number, number] {
     const page = comicPage / previewPrePage;
     const no = comicPage % previewPrePage;
     return [page, no];
