@@ -13,21 +13,4 @@
 
 unsafeWindow.myPluginLoaded = true;
 GM_log("载入");
-
-function xhrGet(url) {
-  return new Promise((resolve, reject) => {
-    GM_xmlhttpRequest({
-      method: "GET",
-      url: url,
-      onload: response => {
-        resolve(response.responseText);
-      },
-      onerror: error => {
-        reject(error);
-      }
-    });
-  });
-}
-
-unsafeWindow.xhrGet = xhrGet;
 unsafeWindow.GM_XHR = GM_xmlhttpRequest;
