@@ -29,7 +29,7 @@ function GallaryDetail() {
       }}>
 
         {itemData.map((item) => (
-          <div style={{ width: `${item.width}px`, height: `${item.height}px`, background: `transparent url(${item.imageUrl}) -${item.xOffset}px 0 no-repeat` }}>
+          <div key={item.link} style={{ width: `${item.width}px`, height: `${item.height}px`, background: `transparent url(${item.imageUrl}) -${item.xOffset}px 0 no-repeat` }}>
           </div>
         ))}
 
