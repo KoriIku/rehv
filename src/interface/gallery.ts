@@ -99,6 +99,9 @@ export interface PageListProps {
 
 export interface normalPreview {
   link: string
+  pToken: string
+  galleryNo: string
+  pageNo: string
   imageUrl: string
   xOffset: number
   yOffset: number

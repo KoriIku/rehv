@@ -73,6 +73,11 @@ export function parseGallaryDetail(html: string) {
     $('#gdt > .gdtm').each((i, element) => {
         const link = $(element).find('a').attr('href')!.trim()
 
+        var matchlink = link.match(/\/s\/([^/]+)\/([^-]+)-([^-]+)/)!;
+        const pToken = matchlink[1];// ff8aad84c6
+        const galleryNo = matchlink[2];// 2433508
+        const pageNo = matchlink[3];// 17
+
         // 获取元素的HTML代码
         const elementHtml = $(element).html()!;
 
@@ -88,7 +93,7 @@ export function parseGallaryDetail(html: string) {
         const width = parseInt(match[1], 10);
         const height = parseInt(match[2], 10);
 
-        elements.push({ link, imageUrl, xOffset, yOffset, width, height, position });
+        elements.push({ link, pToken, galleryNo, pageNo, imageUrl, xOffset, yOffset, width, height, position });
     });
     return elements;
 }
