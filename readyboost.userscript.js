@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         My Greasemonkey Plugin
+// @name         Rehv ReadyBoost
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
