@@ -1,7 +1,3 @@
-import { ImageList, ImageListItem } from "@mui/material";
-import { it } from "node:test";
-import React from "react";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSWRandAxios } from "../hooks/useSWRGallaryList";
 import { parseGallaryDetail } from "../parse/tools";

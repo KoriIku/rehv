@@ -1,8 +1,10 @@
 import React from 'react';
-import { Card, Col, List, Rating, Row } from '@douyinfe/semi-ui';
 import ColorChip from './ColorChip';
 import { IndexListItemPorps } from '../interface/gallery';
 import { Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography/Typography';
+import Card from '@mui/material/Card/Card';
+import Box from '@mui/system/Box/Box';
 
 type Props = {
   item: IndexListItemPorps
@@ -10,33 +12,43 @@ type Props = {
 
 const GallaryCard: React.FC<Props> = ({ item }) => {
   return (
-    <Card style={{ maxWidth: 360 }}>
-      <Row>
-        <Col span={6} style={{ overflow: 'hidden' }}>
-          <img src={item.thumb} alt={item.title} style={{ width:"100%", objectFit: 'cover' }} />
-        </Col>
-        <Col span={18}>
-        <Link to={`/g/${item.gid}/${item.gtoken}`}><h3>{item.title}</h3></Link>
-          <p>{item.uploader}</p>
-          <Row>
-            <Col>
-              {/* <Rating allowHalf value={item.rating} /> */}
-            </Col>
-            <Col>
-              {item.language}
-            </Col>
-          </Row>
-          <Row>
-            <Col span={10}>
-              <ColorChip category={item.category}/>
-            </Col>
-            <Col span={14}>
-              {item.uploadtime}
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Card>
+    <>
+      <Card sx={{}}>
+        <Box sx={{
+          maxWidth: 360,
+          height: 136,
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr 1fr 1fr',
+          gridTemplateRows: 'auto repeat(4, 1fr)',
+          gridTemplateAreas: `
+        "thumb  title title title"
+        "thumb  uploader uploader uploader"
+        "thumb  tag tag tag"
+        "thumb  rating    language    pagenumber"
+        "thumb  category uploadtime uploadtime"`
+        }}>
+          <Box sx={{ gridArea: 'thumb' }}><img src={item.thumb} alt={item.title} style={{ width: 95, height: 136, objectFit: 'cover' }} /></Box>
+          <Box sx={{ gridArea: 'title' }}><Link to={`/g/${item.gid}/${item.gtoken}`}>
+            <Typography
+              title={item.title}
+              sx={{
+                fontSize: '10pt',
+                overflow: 'hidden',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+              }}
+            >
+              {item.title}
+            </Typography></Link>
+          </Box>
+          <Box sx={{ gridArea: 'uploader' }}>{item.uploader}</Box>
+          <Box sx={{ gridArea: 'category' }}><ColorChip category={item.category} /></Box>
+          <Box sx={{ gridArea: 'uploadtime', justifySelf: 'end', alignSelf: 'center' }}>{item.uploadtime}</Box>
+        </Box>
+      </Card>
+    </>
   );
 }
 
