@@ -18,14 +18,14 @@ const GallaryCard: React.FC<Props> = ({ item }) => {
           maxWidth: 360,
           height: 136,
           display: 'grid',
-          gridTemplateColumns: 'auto 1fr 1fr 1fr',
+          gridTemplateColumns: 'auto auto 1fr auto auto',
           gridTemplateRows: 'auto repeat(4, 1fr)',
           gridTemplateAreas: `
-        "thumb  title title title"
-        "thumb  uploader uploader uploader"
-        "thumb  tag tag tag"
-        "thumb  rating    language    pagenumber"
-        "thumb  category uploadtime uploadtime"`
+        "thumb  title    title    title      title"
+        "thumb  uploader uploader uploader   uploader"
+        "thumb  tag      tag      tag        tag"
+        "thumb  rating   .        language   pagenumber"
+        "thumb  category .        uploadtime uploadtime"`
         }}>
           <Box sx={{ gridArea: 'thumb' }}><img src={item.thumb} alt={item.title} style={{ width: 95, height: 136, objectFit: 'cover' }} /></Box>
           <Box sx={{ gridArea: 'title' }}><Link to={`/g/${item.gid}/${item.gtoken}`}>

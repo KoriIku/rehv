@@ -1,6 +1,6 @@
 import React from 'react'
 
-const tagColors: Record<string, string>  = {
+const tagColors: Record<string, string> = {
   'Doujinshi': '#9E2720',
   'Manga': '#DB6C24',
   'Artist CG': '#D38F1D',
